@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>铃兰酱的功能介绍</title>
+  <style>
+    :root {
+      --bg-1: #f8f5ef;
+      --bg-2: #eef3f8;
+      --card: rgba(255, 255, 255, 0.58);
+      --card-strong: rgba(255, 255, 255, 0.7);
+      --border: rgba(180, 162, 121, 0.28);
+      --text: #43566d;
+      --title: #7b6541;
+      --gold: #d9b56d;
+      --gold-deep: #b89352;
+      --blue: #8ea7c2;
+      --blue-deep: #6985a3;
+      --shadow: 0 18px 40px rgba(105, 133, 163, 0.16);
+      --shadow-hover: 0 22px 48px rgba(185, 147, 82, 0.2);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 226, 178, 0.55), transparent 32%),
+        radial-gradient(circle at top right, rgba(193, 214, 236, 0.5), transparent 28%),
+        radial-gradient(circle at bottom center, rgba(255, 239, 211, 0.42), transparent 34%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(8px);
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+
+    body::before {
+      width: 400px;
+      height: 400px;
+      top: -100px;
+      left: -100px;
+      background: radial-gradient(circle, rgba(255, 219, 153, 0.5), rgba(255, 219, 153, 0));
+    }
+
+    body::after {
+      width: 450px;
+      height: 450px;
+      right: -120px;
+      bottom: -100px;
+      background: radial-gradient(circle, rgba(173, 196, 222, 0.5), rgba(173, 196, 222, 0));
+      animation-delay: -4s;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(255,255,255,0.62), rgba(255,255,255,0.4));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .avatar-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .avatar-ring {
+      width: 160px;
+      height: 160px;
+      padding: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(217, 181, 109, 0.8), rgba(142, 167, 194, 0.72));
+      box-shadow:
+        0 10px 26px rgba(185, 147, 82, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.75);
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #fff7ea, #eef4fa);
+      border: 3px solid rgba(255, 255, 255, 0.86);
+    }
+
+    .hero-text h1 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.2;
+      color: var(--title);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-text p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--blue-deep);
+    }
+
+    .section-list {
+      margin-top: 26px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .section-card {
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(255,255,255,0.42));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 22px;
+      border-bottom: 1px solid rgba(180, 162, 121, 0.18);
+      background: linear-gradient(90deg, rgba(255, 246, 228, 0.62), rgba(236, 243, 250, 0.38));
+    }
+
+    .section-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--blue));
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.48);
+      flex-shrink: 0;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 20px;
+      color: var(--title);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .command-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      padding: 20px;
+    }
+
+    .command-item {
+      width: 100%;
+      border: 1px solid rgba(142, 167, 194, 0.18);
+      background: linear-gradient(135deg, rgba(255,255,255,0.82), rgba(244, 248, 252, 0.7));
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      text-align: left;
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      box-shadow: 0 8px 18px rgba(105, 133, 163, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .command-item:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(217, 181, 109, 0.35);
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255, 249, 239, 0.82));
+    }
+
+    .command-item:active {
+      transform: translateY(0);
+    }
+
+    .command-main {
+      min-width: 0;
+      flex: 1;
+      font-size: 16px;
+      line-height: 1.7;
+      word-break: break-word;
+    }
+
+    .command-copy {
+      flex-shrink: 0;
+      font-size: 13px;
+      color: var(--gold-deep);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 246, 228, 0.9);
+      border: 1px solid rgba(217, 181, 109, 0.2);
+      white-space: nowrap;
+    }
+
+    .cmd {
+      font-weight: 700;
+      color: var(--blue-deep);
+    }
+
+    .dash {
+      color: var(--gold-deep);
+      margin: 0 4px;
+      font-weight: 700;
+    }
+
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: rgba(67, 86, 109, 0.92);
+      color: #fff;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 14px 30px rgba(67, 86, 109, 0.28);
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: min(100% - 20px, 1000px);
+        padding: 20px 0 84px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 18px;
+        padding: 22px 18px;
+      }
+
+      .avatar-ring {
+        width: 132px;
+        height: 132px;
+      }
+
+      .hero-text h1 {
+        font-size: 28px;
+      }
+
+      .hero-text p {
+        font-size: 14px;
+      }
+
+      .section-header {
+        padding: 16px 16px;
+      }
+
+      .section-title {
+        font-size: 18px;
+      }
+
+      .command-list {
+        padding: 14px;
+        gap: 12px;
+      }
+
+      .command-item {
+        padding: 14px;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .command-main {
+        font-size: 15px;
+      }
+
+      .command-copy {
+        font-size: 12px;
+        align-self: flex-end;
+      }
+
+      .toast {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sparkles" aria-hidden="true">
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+  </div>
+
+  <div class="container">
+    <header class="hero">
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <img src="suzuran.jpg" alt="铃兰头像">
+        </div>
+      </div>
+      <div class="hero-text">
+        <h1>这里是Mer3y的铃兰酱功能介绍</h1>
+        <p>点击任意功能条目即可复制对应指令，支持手机和桌面端使用。</p>
+      </div>
+    </header>
+
+    <main class="section-list">
+      <section class="section-card">
+        <div class="section-header">
+          <span class="section-dot"></span>
+          <h2 class="section-title">硬件信息</h2>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="@铃兰 cpu" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 cpu</span><span class="dash"> - </span>硬件信息查询</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="@铃兰 gpu" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 gpu</span><span class="dash"> - </span>硬件信息查询</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <span class="section-dot"></span>
+          <h2 class="section-title">游戏相关</h2>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="小黑盒" type="button">
+            <div class="command-main"><span class="cmd">小黑盒 + 游戏名</span><span class="dash"> - </span>获取小黑盒游戏截图</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <span class="section-dot"></span>
+          <h2 class="section-title">bilibili相关</h2>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="/总结" type="button">
+            <div class="command-main"><span class="cmd">/总结 + Bv号</span><span class="dash"> - </span>获取AI视频总结</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/总结帮助" type="button">
+            <div class="command-main"><span class="cmd">/总结帮助</span><span class="dash"> - </span>显示插件帮助信息</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/推送列表" type="button">
+            <div class="command-main"><span class="cmd">/推送列表</span><span class="dash"> - </span>查看推送目标列表</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/最新视频" type="button">
+            <div class="command-main"><span class="cmd">/最新视频</span><span class="dash"> - </span>获取UP主最新视频并生成总结</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/订阅" type="button">
+            <div class="command-main"><span class="cmd">/订阅</span><span class="dash"> - </span>订阅UP主</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/订阅列表" type="button">
+            <div class="command-main"><span class="cmd">/订阅列表</span><span class="dash"> - </span>查看订阅列表</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <span class="section-dot"></span>
+          <h2 class="section-title">图片与表情</h2>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="截图" type="button">
+            <div class="command-main"><span class="cmd">截图 + 链接</span><span class="dash"> - </span>API网页截图</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="@铃兰 画图豆包" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 画图豆包 + 描述</span><span class="dash"> - </span>火山方舟Seedream图片生成</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/表情列表" type="button">
+            <div class="command-main"><span class="cmd">/表情列表</span><span class="dash"> - </span>查看所有可用的表情包模板</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="/表情帮助" type="button">
+            <div class="command-main"><span class="cmd">/表情帮助</span><span class="dash"> - </span>查看meme插件帮助菜单</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="撅" type="button">
+            <div class="command-main"><span class="cmd">表情 + 引用</span><span class="dash"> - </span>制作meme</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="右镜像" type="button">
+            <div class="command-main"><span class="cmd">镜像</span><span class="dash"> - </span>制作诡异meme，以右镜像为例</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-header">
+          <span class="section-dot"></span>
+          <h2 class="section-title">群聊统计与报告</h2>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="日报" type="button">
+            <div class="command-main"><span class="cmd">/日报</span><span class="dash"> - </span>真寻日报 生成日报</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="昨日壁画王" type="button">
+            <div class="command-main"><span class="cmd">昨日壁画王</span><span class="dash"> - </span>显示昨天群内谁聊天量最多</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="今日壁画王" type="button">
+            <div class="command-main"><span class="cmd">今日壁画王</span><span class="dash"> - </span>显示今天群内谁聊天量最多</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+          <button class="command-item" data-command="运行状态" type="button">
+            <div class="command-main"><span class="cmd">运行状态</span><span class="dash"> - </span>生成并发送当前服务器运行状态图片</div>
+            <span class="command-copy">点击复制</span>
+          </button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">复制成功</div>
+
+  <script>
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1800);
+    }
+
+    async function copyText(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          textarea.style.pointerEvents = 'none';
+          document.body.appendChild(textarea);
+          textarea.focus();
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+        }
+        showToast('复制成功：' + text);
+      } catch (e) {
+        showToast('复制失败，请手动复制');
+      }
+    }
+
+    document.querySelectorAll('.command-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const command = item.getAttribute('data-command') || '';
+        copyText(command.trim());
+      });
+    });
+  </script>
+</body>
+</html>
