@@ -139,6 +139,7 @@
     .section-list {
       margin-top: 26px;
       display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
 
@@ -269,6 +270,10 @@
     }
 
     @media (max-width: 768px) {
+      .section-list {
+        grid-template-columns: 1fr;
+      }
+
       .container {
         width: min(100% - 20px, 1000px);
         padding: 20px 0 84px;
@@ -333,19 +338,6 @@
   </style>
 </head>
 <body>
-  <div class="sparkles" aria-hidden="true">
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-    <div class="sparkle"></div>
-  </div>
-
   <div class="container">
     <header class="hero">
       <div class="avatar-wrap">
@@ -412,12 +404,8 @@
             <div class="command-main"><span class="cmd">/最新视频</span><span class="dash"> - </span>获取UP主最新视频并生成总结</div>
             <span class="command-copy">点击复制</span>
           </button>
-          <button class="command-item" data-command="/订阅" type="button">
-            <div class="command-main"><span class="cmd">/订阅</span><span class="dash"> - </span>订阅UP主</div>
-            <span class="command-copy">点击复制</span>
-          </button>
-          <button class="command-item" data-command="/订阅列表" type="button">
-            <div class="command-main"><span class="cmd">/订阅列表</span><span class="dash"> - </span>查看订阅列表</div>
+          <button class="command-item" data-command="/uid" type="button">
+            <div class="command-main"><span class="cmd">/uid + UID数字</span><span class="dash"> - </span>查询 AICU 用户画像</div>
             <span class="command-copy">点击复制</span>
           </button>
         </div>
@@ -434,7 +422,7 @@
             <span class="command-copy">点击复制</span>
           </button>
           <button class="command-item" data-command="@铃兰 画图豆包" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 画图豆包 + 描述</span><span class="dash"> - </span>火山方舟Seedream图片生成</div>
+            <div class="command-main"><span class="cmd">@铃兰 画图豆包 + 描述</span><span class="dash"> - </span>火山方舟图片生成</div>
             <span class="command-copy">点击复制</span>
           </button>
           <button class="command-item" data-command="/表情列表" type="button">
@@ -447,10 +435,6 @@
           </button>
           <button class="command-item" data-command="撅" type="button">
             <div class="command-main"><span class="cmd">表情 + 引用</span><span class="dash"> - </span>制作meme</div>
-            <span class="command-copy">点击复制</span>
-          </button>
-          <button class="command-item" data-command="右镜像" type="button">
-            <div class="command-main"><span class="cmd">镜像</span><span class="dash"> - </span>制作诡异meme，以右镜像为例</div>
             <span class="command-copy">点击复制</span>
           </button>
         </div>
