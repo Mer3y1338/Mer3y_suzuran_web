@@ -268,6 +268,30 @@
       box-shadow: 0 0 0 3px rgba(82,196,126,0.2);
       animation: pulse 2s ease infinite;
     }
+    .badge-offline {
+      background: rgba(220, 80, 80, 0.15);
+      border: 1px solid rgba(220, 80, 80, 0.3);
+      color: #c0392b;
+    }
+    .badge-offline::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #e74c3c;
+      box-shadow: 0 0 0 3px rgba(231,76,60,0.2);
+    }
+    .badge-loading {
+      background: rgba(142,167,194,0.15);
+      border: 1px solid rgba(142,167,194,0.3);
+      color: var(--blue-deep);
+    }
+    .badge-loading::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 1s ease infinite;
+    }
     @keyframes pulse {
       0%, 100% { box-shadow: 0 0 0 3px rgba(82,196,126,0.2); }
       50% { box-shadow: 0 0 0 6px rgba(82,196,126,0.05); }
@@ -680,7 +704,7 @@
         <h1><span class="typewriter-text" id="typewriterEl"></span></h1>
         <p>点击任意功能条目即可复制对应指令，支持手机和桌面端使用。</p>
         <div class="status-badges">
-          <span class="badge badge-online">在线运行中</span>
+          <span class="badge badge-loading" id="statusBadge">检测中...</span>
           <span class="badge badge-gold">✦ 铃兰酱</span>
           <span class="badge badge-blue">🤖 QQ机器人</span>
         </div>
@@ -1128,6 +1152,38 @@
     // ─── 统计总指令数 ───
     const total = document.querySelectorAll('.command-item').length;
     document.getElementById('totalCount').textContent = total;
+
+    // ─── AstrBot 状态检测 ───
+    const statusBadge = document.getElementById('statusBadge');
+    const STATUS_API = 'https://love.mer3y.xyz/api/astrbot-status';
+
+    async function checkAstrbotStatus() {
+      try {
+        const res = await fetch(STATUS_API, { 
+          method: 'GET',
+          mode: 'cors',
+          cache: 'no-cache'
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        
+        if (data.status === 'online') {
+          statusBadge.className = 'badge badge-online';
+          statusBadge.textContent = '在线运行中';
+        } else {
+          statusBadge.className = 'badge badge-offline';
+          statusBadge.textContent = '已停机';
+        }
+      } catch (e) {
+        console.warn('Status check failed:', e);
+        statusBadge.className = 'badge badge-offline';
+        statusBadge.textContent = '连接失败';
+      }
+    }
+
+    // 首次检测 + 每 30 秒刷新
+    checkAstrbotStatus();
+    setInterval(checkAstrbotStatus, 30000);
 
   })();
   </script>
