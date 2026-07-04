@@ -714,11 +714,11 @@
     <!-- 统计栏 -->
     <div class="stats-bar" id="statsBar">
       <div class="stat-card">
-        <div class="stat-num" data-target="6">0</div>
+        <div class="stat-num" data-target="8">0</div>
         <div class="stat-label">功能模块</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num" data-target="22">0</div>
+        <div class="stat-num" data-target="47">0</div>
         <div class="stat-label">可用指令</div>
       </div>
       <div class="stat-card">
@@ -737,9 +737,9 @@
       <span class="search-icon">⌕</span>
     </div>
 
-    <!-- === 核心功能 === -->
+    <!-- === 功能总览 === -->
     <div class="section-category" style="animation-delay:0.5s">
-      <span class="section-category-title">核心功能</span>
+      <span class="section-category-title">功能总览</span>
       <div class="section-category-line"></div>
     </div>
 
@@ -747,18 +747,46 @@
 
       <section class="section-card" data-delay="0">
         <div class="section-header">
-          <span class="section-icon">🤖</span>
+          <span class="section-icon">📺</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">AI 对话</h2>
-          <span class="section-count">2 条</span>
+          <h2 class="section-title">B站视频工具</h2>
+          <span class="section-count">9 条</span>
         </div>
         <div class="command-list">
-          <button class="command-item" data-command="@铃兰" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 + 内容</span><span class="dash"> — </span>与铃兰进行AI对话</div>
+          <button class="command-item" data-command="/总结" type="button">
+            <div class="command-main"><span class="cmd">/总结 + BV号/链接</span><span class="dash"> — </span>获取 AI 视频总结</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="@铃兰 翻译" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 翻译 + 内容</span><span class="dash"> — </span>AI智能翻译</div>
+          <button class="command-item" data-command="/总结帮助" type="button">
+            <div class="command-main"><span class="cmd">/总结帮助</span><span class="dash"> — </span>显示视频总结帮助</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/最新视频" type="button">
+            <div class="command-main"><span class="cmd">/最新视频</span><span class="dash"> — </span>获取 UP 主最新视频并生成总结</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/识别开关" type="button">
+            <div class="command-main"><span class="cmd">/识别开关</span><span class="dash"> — </span>开启或关闭 B 站链接自动识别</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/订阅" type="button">
+            <div class="command-main"><span class="cmd">/订阅 + UP主</span><span class="dash"> — </span>订阅 UP 主更新</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/取消订阅" type="button">
+            <div class="command-main"><span class="cmd">/取消订阅 + UP主</span><span class="dash"> — </span>取消 UP 主订阅</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/订阅列表" type="button">
+            <div class="command-main"><span class="cmd">/订阅列表</span><span class="dash"> — </span>查看已订阅的 UP 主</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/检查更新" type="button">
+            <div class="command-main"><span class="cmd">/检查更新</span><span class="dash"> — </span>手动检查订阅 UP 是否有新视频</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/B站登录" type="button">
+            <div class="command-main"><span class="cmd">/B站登录 / B站登出</span><span class="dash"> — </span>扫码登录或退出 B 站账号</div>
             <span class="command-copy">复制</span>
           </button>
         </div>
@@ -766,18 +794,26 @@
 
       <section class="section-card" data-delay="1">
         <div class="section-header">
-          <span class="section-icon">🎮</span>
+          <span class="section-icon">🤖</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">游戏相关</h2>
-          <span class="section-count">2 条</span>
+          <h2 class="section-title">AI 对话与占卜</h2>
+          <span class="section-count">4 条</span>
         </div>
         <div class="command-list">
-          <button class="command-item" data-command="/三角洲密码" type="button">
-            <div class="command-main"><span class="cmd">/三角洲密码</span><span class="dash"> — </span>查询三角洲行动今日密码</div>
+          <button class="command-item" data-command="@铃兰" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 + 内容</span><span class="dash"> — </span>与铃兰进行 AI 对话</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="小黑盒" type="button">
-            <div class="command-main"><span class="cmd">小黑盒 + 游戏名</span><span class="dash"> — </span>获取小黑盒游戏截图</div>
+          <button class="command-item" data-command="@铃兰 翻译" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 翻译 + 内容</span><span class="dash"> — </span>AI 智能翻译</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="@铃兰 占卜" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 占卜 + 内容</span><span class="dash"> — </span>让铃兰帮你占卜</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="@铃兰 塔罗牌" type="button">
+            <div class="command-main"><span class="cmd">@铃兰 塔罗牌 + 内容</span><span class="dash"> — </span>抽取塔罗牌并解析</div>
             <span class="command-copy">复制</span>
           </button>
         </div>
@@ -785,26 +821,26 @@
 
       <section class="section-card" data-delay="2">
         <div class="section-header">
-          <span class="section-icon">📺</span>
+          <span class="section-icon">🎮</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">bilibili 相关</h2>
+          <h2 class="section-title">游戏与查询</h2>
           <span class="section-count">5 条</span>
         </div>
         <div class="command-list">
-          <button class="command-item" data-command="/总结" type="button">
-            <div class="command-main"><span class="cmd">/总结 + Bv号</span><span class="dash"> — </span>获取 AI 视频总结</div>
+          <button class="command-item" data-command="/三角洲密码" type="button">
+            <div class="command-main"><span class="cmd">/三角洲密码</span><span class="dash"> — </span>查询三角洲行动今日密码</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="/总结帮助" type="button">
-            <div class="command-main"><span class="cmd">/总结帮助</span><span class="dash"> — </span>显示插件帮助信息</div>
+          <button class="command-item" data-command="/粥密码" type="button">
+            <div class="command-main"><span class="cmd">/粥密码</span><span class="dash"> — </span>三角洲密码别名</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="/推送列表" type="button">
-            <div class="command-main"><span class="cmd">/推送列表</span><span class="dash"> — </span>查看推送目标列表</div>
+          <button class="command-item" data-command="/每日密码" type="button">
+            <div class="command-main"><span class="cmd">/每日密码</span><span class="dash"> — </span>三角洲每日密码别名</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="/最新视频" type="button">
-            <div class="command-main"><span class="cmd">/最新视频</span><span class="dash"> — </span>获取UP主最新视频并生成总结</div>
+          <button class="command-item" data-command="小黑盒" type="button">
+            <div class="command-main"><span class="cmd">小黑盒 / xiaoheihe + 游戏名</span><span class="dash"> — </span>获取小黑盒游戏截图</div>
             <span class="command-copy">复制</span>
           </button>
           <button class="command-item" data-command="/uid" type="button">
@@ -818,28 +854,32 @@
         <div class="section-header">
           <span class="section-icon">🎨</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">图片与表情</h2>
-          <span class="section-count">5 条</span>
+          <h2 class="section-title">生图与截图</h2>
+          <span class="section-count">6 条</span>
         </div>
         <div class="command-list">
           <button class="command-item" data-command="截图" type="button">
-            <div class="command-main"><span class="cmd">截图 + 链接</span><span class="dash"> — </span>API 网页截图</div>
+            <div class="command-main"><span class="cmd">截图 / 网页截图 + 链接</span><span class="dash"> — </span>生成网页截图</div>
             <span class="command-copy">复制</span>
           </button>
           <button class="command-item" data-command="@铃兰 生图" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 生图" + 描述</span><span class="dash"> — </span>GPT Image2 生图</div>
+            <div class="command-main"><span class="cmd">@铃兰 生图 + 描述</span><span class="dash"> — </span>GPT Image2 生图</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="/表情列表" type="button">
-            <div class="command-main"><span class="cmd">/表情列表</span><span class="dash"> — </span>查看所有可用的表情包模板</div>
+          <button class="command-item" data-command="/生图模型" type="button">
+            <div class="command-main"><span class="cmd">/生图模型</span><span class="dash"> — </span>查看或切换生图模型</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="/表情帮助" type="button">
-            <div class="command-main"><span class="cmd">/表情帮助</span><span class="dash"> — </span>查看 meme 插件帮助菜单</div>
+          <button class="command-item" data-command="/预设" type="button">
+            <div class="command-main"><span class="cmd">/预设</span><span class="dash"> — </span>查看可用生图风格预设</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="撅" type="button">
-            <div class="command-main"><span class="cmd">表情 + 引用</span><span class="dash"> — </span>制作 meme 表情包</div>
+          <button class="command-item" data-command="/生图任务" type="button">
+            <div class="command-main"><span class="cmd">/生图任务</span><span class="dash"> — </span>查看当前生图任务状态</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/生图取消" type="button">
+            <div class="command-main"><span class="cmd">/生图取消</span><span class="dash"> — </span>取消正在执行的生图任务</div>
             <span class="command-copy">复制</span>
           </button>
         </div>
@@ -847,26 +887,30 @@
 
       <section class="section-card" data-delay="4">
         <div class="section-header">
-          <span class="section-icon">📊</span>
+          <span class="section-icon">🔥</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">群聊统计与报告</h2>
-          <span class="section-count">4 条</span>
+          <h2 class="section-title">炉石传说</h2>
+          <span class="section-count">5 条</span>
         </div>
         <div class="command-list">
-          <button class="command-item" data-command="日报" type="button">
-            <div class="command-main"><span class="cmd">/日报</span><span class="dash"> — </span>真寻日报 生成日报</div>
+          <button class="command-item" data-command="/查卡" type="button">
+            <div class="command-main"><span class="cmd">/查卡 + 卡牌名</span><span class="dash"> — </span>查询炉石卡牌信息</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="昨日壁画王" type="button">
-            <div class="command-main"><span class="cmd">昨日壁画王</span><span class="dash"> — </span>显示昨天群内聊天量最多的人</div>
+          <button class="command-item" data-command="/查酒馆" type="button">
+            <div class="command-main"><span class="cmd">/查酒馆 + 关键词</span><span class="dash"> — </span>查询酒馆战棋卡牌</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="今日壁画王" type="button">
-            <div class="command-main"><span class="cmd">今日壁画王</span><span class="dash"> — </span>显示今天群内聊天量最多的人</div>
+          <button class="command-item" data-command="/酒馆tag" type="button">
+            <div class="command-main"><span class="cmd">/酒馆tag + 标签</span><span class="dash"> — </span>按标签筛选酒馆卡牌</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="运行状态" type="button">
-            <div class="command-main"><span class="cmd">运行状态</span><span class="dash"> — </span>生成当前服务器运行状态图片</div>
+          <button class="command-item" data-command="/原画" type="button">
+            <div class="command-main"><span class="cmd">/原画 + 卡牌名</span><span class="dash"> — </span>获取炉石卡牌原画</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/卡组" type="button">
+            <div class="command-main"><span class="cmd">/卡组 + 卡组代码</span><span class="dash"> — </span>生成炉石卡组图片</div>
             <span class="command-copy">复制</span>
           </button>
         </div>
@@ -874,26 +918,104 @@
 
       <section class="section-card" data-delay="5">
         <div class="section-header">
-          <span class="section-icon">🖥️</span>
+          <span class="section-icon">😺</span>
           <span class="section-dot"></span>
-          <h2 class="section-title">其他信息</h2>
-          <span class="section-count">4 条</span>
+          <h2 class="section-title">表情包工具</h2>
+          <span class="section-count">7 条</span>
         </div>
         <div class="command-list">
-          <button class="command-item" data-command="@铃兰 cpu" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 cpu</span><span class="dash"> — </span>查询 CPU 硬件信息</div>
+          <button class="command-item" data-command="/表情列表" type="button">
+            <div class="command-main"><span class="cmd">/表情列表</span><span class="dash"> — </span>查看所有可用表情包模板</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="@铃兰 gpu" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 gpu</span><span class="dash"> — </span>查询 GPU 硬件信息</div>
+          <button class="command-item" data-command="/表情帮助" type="button">
+            <div class="command-main"><span class="cmd">/表情帮助</span><span class="dash"> — </span>查看 meme 插件帮助菜单</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="@铃兰 占卜" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 占卜 + 内容</span><span class="dash"> — </span>让铃兰来帮你占卜吧</div>
+          <button class="command-item" data-command="/表情信息" type="button">
+            <div class="command-main"><span class="cmd">/表情信息 + 模板名</span><span class="dash"> — </span>查看单个表情模板详情</div>
             <span class="command-copy">复制</span>
           </button>
-          <button class="command-item" data-command="@铃兰 塔罗牌" type="button">
-            <div class="command-main"><span class="cmd">@铃兰 塔罗牌 + 内容</span><span class="dash"> — </span>来张塔罗牌吧</div>
+          <button class="command-item" data-command="/表情状态" type="button">
+            <div class="command-main"><span class="cmd">/表情状态</span><span class="dash"> — </span>查看表情包插件运行状态</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/表情资源" type="button">
+            <div class="command-main"><span class="cmd">/表情资源</span><span class="dash"> — </span>查看表情包资源状态</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/表情禁用" type="button">
+            <div class="command-main"><span class="cmd">/表情启用 / 表情禁用</span><span class="dash"> — </span>群内启用或禁用自动表情</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/单表情禁用" type="button">
+            <div class="command-main"><span class="cmd">/单表情启用 / 单表情禁用</span><span class="dash"> — </span>单独启用或禁用某个表情模板</div>
+            <span class="command-copy">复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card" data-delay="6">
+        <div class="section-header">
+          <span class="section-icon">🎵</span>
+          <span class="section-dot"></span>
+          <h2 class="section-title">音乐点歌</h2>
+          <span class="section-count">5 条</span>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="/点歌" type="button">
+            <div class="command-main"><span class="cmd">/点歌 + 歌名</span><span class="dash"> — </span>搜索网易云歌曲并点歌</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/听歌" type="button">
+            <div class="command-main"><span class="cmd">/听歌 + 歌名</span><span class="dash"> — </span>点歌命令别名</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/网易云" type="button">
+            <div class="command-main"><span class="cmd">/网易云 + 歌名</span><span class="dash"> — </span>网易云点歌别名</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="来一首" type="button">
+            <div class="command-main"><span class="cmd">来一首 + 歌名</span><span class="dash"> — </span>自然语言点歌</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="播放" type="button">
+            <div class="command-main"><span class="cmd">播放 + 歌名</span><span class="dash"> — </span>自然语言播放歌曲</div>
+            <span class="command-copy">复制</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="section-card" data-delay="7">
+        <div class="section-header">
+          <span class="section-icon">📊</span>
+          <span class="section-dot"></span>
+          <h2 class="section-title">报告与硬件</h2>
+          <span class="section-count">6 条</span>
+        </div>
+        <div class="command-list">
+          <button class="command-item" data-command="/日报" type="button">
+            <div class="command-main"><span class="cmd">/日报</span><span class="dash"> — </span>生成真寻日报</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="今日壁画王" type="button">
+            <div class="command-main"><span class="cmd">今日壁画王</span><span class="dash"> — </span>显示今天群内聊天量排行</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="昨日壁画王" type="button">
+            <div class="command-main"><span class="cmd">昨日壁画王</span><span class="dash"> — </span>显示昨天群内聊天量排行</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="运行状态" type="button">
+            <div class="command-main"><span class="cmd">运行状态</span><span class="dash"> — </span>生成当前服务器运行状态图片</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/cpu" type="button">
+            <div class="command-main"><span class="cmd">/cpu + 型号</span><span class="dash"> — </span>查询 CPU 硬件信息</div>
+            <span class="command-copy">复制</span>
+          </button>
+          <button class="command-item" data-command="/gpu" type="button">
+            <div class="command-main"><span class="cmd">/gpu + 型号</span><span class="dash"> — </span>查询 GPU 硬件信息</div>
             <span class="command-copy">复制</span>
           </button>
         </div>
